@@ -1,0 +1,1343 @@
+[
+    {
+        "id": "blackbox_tab_home",
+        "type": "tab",
+        "label": "Home Dashboard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "blackbox_tab_sensors",
+        "type": "tab",
+        "label": "Sensor Monitoring",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "blackbox_tab_motion",
+        "type": "tab",
+        "label": "Motion Analysis",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "blackbox_tab_alerts",
+        "type": "tab",
+        "label": "Alert Management",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "blackbox_tls_config",
+        "type": "tls-config",
+        "name": "EMQX TLS",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "blackbox_mqtt_broker",
+        "type": "mqtt-broker",
+        "name": "BlackBox EMQX Broker",
+        "broker": "p40f7387.ala.asia-southeast1.emqxsl.com",
+        "port": "8883",
+        "tls": "blackbox_tls_config",
+        "clientid": "nodered_blackbox_client",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "blackbox/status",
+        "birthQos": "1",
+        "birthRetain": "true",
+        "birthPayload": "online",
+        "birthMsg": {},
+        "closeTopic": "blackbox/status",
+        "closeQos": "1",
+        "closeRetain": "true",
+        "closePayload": "offline",
+        "closeMsg": {},
+        "willTopic": "blackbox/status",
+        "willQos": "1",
+        "willRetain": "true",
+        "willPayload": "offline",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "blackbox_ui_base",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "BlackBox Theme",
+                "default": "#1a1a1a",
+                "baseColor": "#1a1a1a",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#1a1a1a",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#00d4ff",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": true
+                },
+                "group-backgroundColor": {
+                    "value": "#1a1a1a",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#555555",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "dark"
+            }
+        },
+        "site": {
+            "name": "IoT Black Box System",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY HH:mm:ss",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "blackbox_ui_tab_home",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "blackbox_ui_tab_sensors",
+        "type": "ui_tab",
+        "name": "Sensors",
+        "icon": "fa-microchip",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "blackbox_ui_tab_motion",
+        "type": "ui_tab",
+        "name": "Motion",
+        "icon": "fa-compass",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "blackbox_ui_tab_alerts",
+        "type": "ui_tab",
+        "name": "Alerts",
+        "icon": "fa-bell",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "blackbox_ui_group_status",
+        "type": "ui_group",
+        "name": "System Status",
+        "tab": "blackbox_ui_tab_home",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_realtime",
+        "type": "ui_group",
+        "name": "Real-time Data",
+        "tab": "blackbox_ui_tab_home",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_alert_current",
+        "type": "ui_group",
+        "name": "Current ",
+        "tab": "blackbox_ui_tab_home",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_temp",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "blackbox_ui_tab_sensors",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_humid",
+        "type": "ui_group",
+        "name": "Humidity",
+        "tab": "blackbox_ui_tab_sensors",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_gas",
+        "type": "ui_group",
+        "name": "Gas Sensor",
+        "tab": "blackbox_ui_tab_sensors",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_vibration",
+        "type": "ui_group",
+        "name": "Vibration Analysis",
+        "tab": "blackbox_ui_tab_motion",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_tilt",
+        "type": "ui_group",
+        "name": "Tilt & Orientation",
+        "tab": "blackbox_ui_tab_motion",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_alert_control",
+        "type": "ui_group",
+        "name": "Alarm Control",
+        "tab": "blackbox_ui_tab_alerts",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "blackbox_ui_group_alert_history",
+        "type": "ui_group",
+        "name": "Alert History",
+        "tab": "blackbox_ui_tab_alerts",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e1fa20097065e239",
+        "type": "mqtt-broker",
+        "name": "emqx",
+        "broker": "ke19046e.ala.asia-southeast1.emqxsl.com",
+        "port": "8883",
+        "tls": "blackbox_tls_config",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "5dd3ceafad888778",
+        "type": "ui_group",
+        "name": "OTA",
+        "tab": "blackbox_ui_tab_alerts",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "comment_home",
+        "type": "comment",
+        "z": "blackbox_tab_home",
+        "name": "HOME DASHBOARD - System Overview",
+        "info": "",
+        "x": 170,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "mqtt_status_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "System Status",
+        "topic": "blackbox/status",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "status_display",
+                "83cfa076e75fe669"
+            ]
+        ]
+    },
+    {
+        "id": "status_display",
+        "type": "ui_template",
+        "z": "blackbox_tab_home",
+        "group": "blackbox_ui_group_status",
+        "name": "Connection Status",
+        "order": 1,
+        "width": "12",
+        "height": "2",
+        "format": "<div class=\"status-bar\"\n  ng-class=\"{'status-online': msg.payload === 'ONLINE', 'status-offline': msg.payload !== 'ONLINE'}\">\n  <div class=\"status-left\">\n    <i class=\"fa\" ng-class=\"{'fa-check-circle': msg.payload === 'ONLINE', 'fa-times-circle': msg.payload !== 'ONLINE'}\"></i>\n    <span class=\"status-label\">ESP32 Black Box:</span>\n    <span class=\"status-value\">{{msg.payload === 'ONLINE' ? 'CONNECTED' : 'DISCONNECTED'}}</span>\n  </div>\n  <div class=\"status-right\">\n    <span class=\"status-time\" id=\"status-time-text\">{{msg.payload === 'ONLINE' ? 'Active' : 'Offline'}}</span>\n  </div>\n</div>\n\n<script>\n  (function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (!msg) return;\n    var timeEl = document.getElementById('status-time-text');\n    if (timeEl) {\n      if (msg.payload === 'ONLINE') {\n        timeEl.textContent = 'Active - ' + new Date().toLocaleTimeString('vi-VN');\n      } else {\n        timeEl.textContent = 'Offline since ' + new Date().toLocaleTimeString('vi-VN');\n      }\n    }\n  });\n})(scope);\n</script>\n\n<style>\n  .status-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 15px 20px;\n    border-radius: 8px;\n    font-family: 'Courier New', monospace;\n    transition: all 0.3s ease;\n  }\n\n  .status-online {\n    background: linear-gradient(135deg, #00b500 0%, #00d000 100%);\n    box-shadow: 0 4px 15px rgba(0, 181, 0, 0.4);\n  }\n\n  .status-offline {\n    background: linear-gradient(135deg, #ca3838 0%, #ff4444 100%);\n    box-shadow: 0 4px 15px rgba(202, 56, 56, 0.4);\n  }\n\n  .status-left {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n  }\n\n  .status-left i {\n    font-size: 24px;\n    color: white;\n  }\n\n  .status-label {\n    font-size: 16px;\n    font-weight: bold;\n    color: white;\n  }\n\n  .status-value {\n    font-size: 18px;\n    font-weight: bold;\n    color: white;\n    background: rgba(255, 255, 255, 0.2);\n    padding: 4px 12px;\n    border-radius: 4px;\n  }\n\n  .status-right {\n    color: rgba(255, 255, 255, 0.9);\n    font-size: 14px;\n  }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 450,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "temp_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "Temperature",
+        "topic": "blackbox/temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "realtime_display"
+            ]
+        ]
+    },
+    {
+        "id": "humid_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "Humidity",
+        "topic": "blackbox/humidity",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "realtime_display"
+            ]
+        ]
+    },
+    {
+        "id": "gas_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "Gas PPM",
+        "topic": "blackbox/gas/ppm",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "realtime_display"
+            ]
+        ]
+    },
+    {
+        "id": "vibration_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "total_tilt",
+        "topic": "blackbox/total_tilt",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "realtime_display"
+            ]
+        ]
+    },
+    {
+        "id": "realtime_display",
+        "type": "ui_template",
+        "z": "blackbox_tab_home",
+        "group": "blackbox_ui_group_realtime",
+        "name": "Real-time Sensors",
+        "order": 1,
+        "width": "12",
+        "height": "12",
+        "format": "<div class=\"sensor-grid\">\n  <div class=\"sensor-card\" id=\"temp-card\">\n    <div class=\"sensor-icon\"><i class=\"fa fa-thermometer-half\"></i></div>\n    <div class=\"sensor-label\">Temperature</div>\n    <div class=\"sensor-value\" id=\"temp-value\">--</div>\n    <div class=\"sensor-unit\">°C</div>\n  </div>\n  \n  <div class=\"sensor-card\" id=\"humid-card\">\n    <div class=\"sensor-icon\"><i class=\"fa fa-tint\"></i></div>\n    <div class=\"sensor-label\">Humidity</div>\n    <div class=\"sensor-value\" id=\"humid-value\">--</div>\n    <div class=\"sensor-unit\">%</div>\n  </div>\n  \n  <div class=\"sensor-card\" id=\"gas-card\">\n    <div class=\"sensor-icon\"><i class=\"fa fa-fire\"></i></div>\n    <div class=\"sensor-label\">Gas PPM</div>\n    <div class=\"sensor-value\" id=\"gas-value\">--</div>\n    <div class=\"sensor-unit\">ppm</div>\n  </div>\n  \n  <div class=\"sensor-card\" id=\"vib-card\">\n    <div class=\"sensor-icon\"><i class=\"fa fa-bar-chart\"></i></div>\n    <div class=\"sensor-label\">Vibration</div>\n    <div class=\"sensor-value\" id=\"vib-value\">--</div>\n    <div class=\"sensor-unit\">RMS</div>\n  </div>\n  \n  <div class=\"sensor-card\" id=\"tilt-card\">\n    <div class=\"sensor-icon\"><i class=\"fa fa-compass\"></i></div>\n    <div class=\"sensor-label\">Tilt Angle</div>\n    <div class=\"sensor-value\" id=\"tilt-value\">--</div>\n    <div class=\"sensor-unit\">degrees</div>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (!msg || !msg.topic) return;\n    \n    const updateCard = (id, value, unit) => {\n      const elem = document.getElementById(id);\n      if (elem) {\n        elem.textContent = parseFloat(value).toFixed(2);\n        const card = document.getElementById(id.replace('-value', '-card'));\n        card.classList.add('pulse');\n        setTimeout(() => card.classList.remove('pulse'), 500);\n      }\n    };\n    \n    if (msg.topic.includes('temperature')) {\n      updateCard('temp-value', msg.payload);\n    } else if (msg.topic.includes('humidity')) {\n      updateCard('humid-value', msg.payload);\n    } else if (msg.topic.includes('gas')) {\n      updateCard('gas-value', msg.payload);\n      const gasCard = document.getElementById('gas-card');\n      if (parseFloat(msg.payload) > 800) {\n        gasCard.style.borderColor = '#ff0000';\n        gasCard.style.boxShadow = '0 0 20px rgba(255,0,0,0.6)';\n      } else if (parseFloat(msg.payload) > 300) {\n        gasCard.style.borderColor = '#ffaa00';\n        gasCard.style.boxShadow = '0 0 20px rgba(255,170,0,0.6)';\n      } else {\n        gasCard.style.borderColor = '#555';\n        gasCard.style.boxShadow = 'none';\n      }\n    } else if (msg.topic.includes('vibration')) {\n      updateCard('vib-value', msg.payload);\n    } else if (msg.topic.includes('tilt')) {\n      updateCard('tilt-value', msg.payload);\n      const tiltCard = document.getElementById('tilt-card');\n      if (parseFloat(msg.payload) > 15) {\n        tiltCard.style.borderColor = '#ff0000';\n      } else if (parseFloat(msg.payload) > 10) {\n        tiltCard.style.borderColor = '#ffaa00';\n      } else {\n        tiltCard.style.borderColor = '#555';\n      }\n    }\n  });\n})(scope);\n</script>\n\n<style>\n.sensor-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n  gap: 15px;\n  padding: 10px;\n}\n\n.sensor-card {\n  background: #1a1a1a;\n  border: 2px solid #555;\n  border-radius: 10px;\n  padding: 20px;\n  text-align: center;\n  transition: all 0.3s ease;\n}\n\n.sensor-card:hover {\n  transform: translateY(-5px);\n  box-shadow: 0 8px 20px rgba(0, 148, 206, 0.3);\n}\n\n.sensor-card.pulse {\n  animation: pulse 0.5s ease;\n}\n\n@keyframes pulse {\n  0%, 100% { transform: scale(1); }\n  50% { transform: scale(1.05); }\n}\n\n.sensor-icon {\n  font-size: 32px;\n  color: #00d4ff;\n  margin-bottom: 10px;\n}\n\n.sensor-label {\n  font-size: 14px;\n  color: #aaa;\n  margin-bottom: 10px;\n}\n\n.sensor-value {\n  font-size: 28px;\n  font-weight: bold;\n  color: #00d4ff;\n  font-family: 'Courier New', monospace;\n  margin-bottom: 5px;\n}\n\n.sensor-unit {\n  font-size: 10px;\n  color: #888;\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 410,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "alert_display",
+        "type": "ui_template",
+        "z": "blackbox_tab_home",
+        "group": "blackbox_ui_group_alert_current",
+        "name": "Status",
+        "order": 1,
+        "width": "12",
+        "height": "3",
+        "format": "<div class=\"alert-container\" id=\"alert-box\">\n  <div class=\"alert-icon\" id=\"alert-icon\">\n    <i class=\"fa fa-check\"></i>\n  </div>\n  <div class=\"alert-content\">\n    <div class=\"alert-title\" id=\"alert-title\">System Normal</div>\n    <div class=\"alert-message\" id=\"alert-message\">No alerts detected</div>\n    <div class=\"alert-time\" id=\"alert-time\"></div>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (!msg || !msg.payload) return;\n    \n    var alertBox = document.getElementById('alert-box');\n    var alertIcon = document.getElementById('alert-icon');\n    var alertTitle = document.getElementById('alert-title');\n    var alertMessage = document.getElementById('alert-message');\n    var alertTime = document.getElementById('alert-time');\n    \n    if (!alertBox) return;\n    \n    var payload = msg.payload.toString();\n    var payloadLower = payload.toLowerCase();\n    alertTime.textContent = new Date().toLocaleString('vi-VN');\n    alertMessage.textContent = payload;\n    \n    // Reset classes\n    alertBox.className = 'alert-container';\n    \n    // CRITICAL events (từ app_types.h)\n    if (payloadLower.indexOf('nguy hiểm') >= 0 || \n        payloadLower.indexOf('va chạm') >= 0 || \n        payloadLower.indexOf('💥') >= 0 ||\n        payloadLower.indexOf('🚨') >= 0) {\n      alertBox.classList.add('alert-critical');\n      alertTitle.innerHTML = '<i class=\"fa fa-ban\"></i> CRITICAL ALERT!';\n      alertIcon.innerHTML = '<i class=\"fa fa-exclamation-triangle\"></i>';\n    }\n    // WARNING events\n    else if (payloadLower.indexOf('cảnh báo') >= 0 || \n             payloadLower.indexOf('⚠️') >= 0 ||\n             payloadLower.indexOf('bất thường') >= 0 ||\n             payloadLower.indexOf('thấp') >= 0 ||\n             payloadLower.indexOf('cao') >= 0) {\n      alertBox.classList.add('alert-warning');\n      alertTitle.innerHTML = '<i class=\"fa fa-warning\"></i> Warning Alert';\n      alertIcon.innerHTML = '<i class=\"fa fa-exclamation-circle\"></i>';\n    }\n    // NORMAL\n    else {\n      alertBox.classList.add('alert-normal');\n      alertTitle.innerHTML = '<i class=\"fa fa-check-circle\"></i> System Normal';\n      alertMessage.textContent = 'Bình thường - All systems operational';\n      alertIcon.innerHTML = '<i class=\"fa fa-check\"></i>';\n    }\n  });\n})(scope);\n</script>\n\n<style>\n.alert-container {\n  display: flex;\n  align-items: center;\n  gap: 20px;\n  padding: 20px;\n  border-radius: 10px;\n  transition: all 0.3s ease;\n  border: 2px solid;\n}\n\n.alert-normal {\n  background: rgba(0, 181, 0, 0.1);\n  border-color: #00b500;\n}\n\n.alert-warning {\n  background: rgba(255, 170, 0, 0.1);\n  border-color: #ffaa00;\n  animation: pulse-warning 2s infinite;\n}\n\n.alert-critical {\n  background: rgba(255, 0, 0, 0.1);\n  border-color: #ff0000;\n  animation: pulse-critical 1s infinite;\n}\n\n@keyframes pulse-warning {\n  0%, 100% { box-shadow: 0 0 10px rgba(255, 170, 0, 0.5); }\n  50% { box-shadow: 0 0 30px rgba(255, 170, 0, 0.8); }\n}\n\n@keyframes pulse-critical {\n  0%, 100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); }\n  50% { box-shadow: 0 0 40px rgba(255, 0, 0, 1); }\n}\n\n.alert-icon {\n  font-size: 48px;\n  min-width: 60px;\n  text-align: center;\n}\n\n.alert-normal .alert-icon { color: #00b500; }\n.alert-warning .alert-icon { color: #ffaa00; }\n.alert-critical .alert-icon { color: #ff0000; }\n\n.alert-content {\n  flex: 1;\n}\n\n.alert-title {\n  font-size: 22px;\n  font-weight: bold;\n  margin-bottom: 8px;\n}\n\n.alert-normal .alert-title { color: #00ff00; }\n.alert-warning .alert-title { color: #ffaa00; }\n.alert-critical .alert-title { color: #ff0000; }\n\n.alert-message {\n  font-size: 16px;\n  color: #ccc;\n  margin-bottom: 5px;\n  word-break: break-word;\n}\n\n.alert-time {\n  font-size: 12px;\n  color: #888;\n  font-family: 'Courier New', monospace;\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 390,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "alert_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "Alert Level",
+        "topic": "blackbox/event",
+        "qos": "1",
+        "datatype": "utf8",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 440,
+        "wires": [
+            [
+                "alert_display"
+            ]
+        ]
+    },
+    {
+        "id": "04fe13963b16f192",
+        "type": "mqtt in",
+        "z": "blackbox_tab_home",
+        "name": "Vibration",
+        "topic": "blackbox/vibration",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "realtime_display"
+            ]
+        ]
+    },
+    {
+        "id": "83cfa076e75fe669",
+        "type": "debug",
+        "z": "blackbox_tab_home",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "comment_sensors",
+        "type": "comment",
+        "z": "blackbox_tab_sensors",
+        "name": "SENSOR MONITORING - Temperature, Humidity, Gas",
+        "info": "",
+        "x": 200,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "temp_sensor_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_sensors",
+        "name": "Temp In",
+        "topic": "blackbox/temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "temp_gauge",
+                "temp_chart"
+            ]
+        ]
+    },
+    {
+        "id": "temp_gauge",
+        "type": "ui_gauge",
+        "z": "blackbox_tab_sensors",
+        "name": "Temperature Gauge",
+        "group": "blackbox_ui_group_temp",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "25",
+        "seg2": "35",
+        "diff": false,
+        "className": "",
+        "x": 350,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "temp_chart",
+        "type": "ui_chart",
+        "z": "blackbox_tab_sensors",
+        "name": "Temp History",
+        "group": "blackbox_ui_group_temp",
+        "order": 2,
+        "width": "6",
+        "height": "5",
+        "label": "Temperature History",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "200",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 350,
+        "y": 130,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "humid_sensor_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_sensors",
+        "name": "Humid In",
+        "topic": "blackbox/humidity",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "humid_gauge",
+                "humid_chart"
+            ]
+        ]
+    },
+    {
+        "id": "humid_gauge",
+        "type": "ui_gauge",
+        "z": "blackbox_tab_sensors",
+        "name": "Humidity Gauge",
+        "group": "blackbox_ui_group_humid",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#00b500"
+        ],
+        "seg1": "40",
+        "seg2": "70",
+        "diff": false,
+        "className": "",
+        "x": 350,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "humid_chart",
+        "type": "ui_chart",
+        "z": "blackbox_tab_sensors",
+        "name": "Humid History",
+        "group": "blackbox_ui_group_humid",
+        "order": 2,
+        "width": "6",
+        "height": "5",
+        "label": "Humidity History",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "200",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#ffbb78",
+            "#2ca02c"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 350,
+        "y": 250,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "gas_sensor_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_sensors",
+        "name": "Gas In",
+        "topic": "blackbox/gas/ppm",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 340,
+        "wires": [
+            [
+                "gas_gauge",
+                "gas_chart",
+                "gas_level_check"
+            ]
+        ]
+    },
+    {
+        "id": "gas_gauge",
+        "type": "ui_gauge",
+        "z": "blackbox_tab_sensors",
+        "name": "Gas Gauge",
+        "group": "blackbox_ui_group_gas",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Gas Concentration",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "300",
+        "seg2": "1000",
+        "diff": false,
+        "className": "",
+        "x": 340,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "gas_chart",
+        "type": "ui_chart",
+        "z": "blackbox_tab_sensors",
+        "name": "Gas History",
+        "group": "blackbox_ui_group_gas",
+        "order": 2,
+        "width": "12",
+        "height": "5",
+        "label": "Gas PPM History",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "2000",
+        "removeOlder": 1,
+        "removeOlderPoints": "200",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5",
+            "#8c564b"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 330,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "gas_level_check",
+        "type": "function",
+        "z": "blackbox_tab_sensors",
+        "name": "Gas Level Indicator",
+        "func": "const ppm = parseFloat(msg.payload);\nlet level = \"Safe\";\nlet color = \"#00b500\";\n\nif (ppm >= 1000) {\n    level = \"🚨 CRITICAL\";\n    color = \"#ff0000\";\n} else if (ppm >= 300) {\n    level = \"⚠️ WARNING\";\n    color = \"#ffaa00\";\n}\n\nmsg.payload = level;\nmsg.color = color;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "gas_text"
+            ]
+        ]
+    },
+    {
+        "id": "gas_text",
+        "type": "ui_text",
+        "z": "blackbox_tab_sensors",
+        "group": "blackbox_ui_group_gas",
+        "order": 3,
+        "width": "6",
+        "height": "4",
+        "name": "Gas Level",
+        "label": "Status:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 560,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "comment_motion",
+        "type": "comment",
+        "z": "blackbox_tab_motion",
+        "name": "MOTION ANALYSIS - Vibration, Tilt, Roll, Pitch",
+        "info": "",
+        "x": 190,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "vib_gauge",
+        "type": "ui_gauge",
+        "z": "blackbox_tab_motion",
+        "name": "Vibration Gauge",
+        "group": "blackbox_ui_group_vibration",
+        "order": 1,
+        "width": "6",
+        "height": "5",
+        "gtype": "gage",
+        "title": "Vibration RMS",
+        "label": "g",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "3",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1.5",
+        "seg2": "3",
+        "diff": false,
+        "className": "",
+        "x": 360,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "vib_chart",
+        "type": "ui_chart",
+        "z": "blackbox_tab_motion",
+        "name": "Vib History",
+        "group": "blackbox_ui_group_vibration",
+        "order": 2,
+        "width": "6",
+        "height": "5",
+        "label": "Vibration History",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "No data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "5",
+        "removeOlder": 1,
+        "removeOlderPoints": "200",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#9467bd",
+            "#c5b0d5",
+            "#8c564b",
+            "#e377c2",
+            "#f7b6d2"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 350,
+        "y": 150,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "roll_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_motion",
+        "name": "Roll",
+        "topic": "blackbox/roll",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "roll_gauge"
+            ]
+        ]
+    },
+    {
+        "id": "pitch_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_motion",
+        "name": "Pitch",
+        "topic": "blackbox/pitch",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 280,
+        "wires": [
+            [
+                "pitch_gauge"
+            ]
+        ]
+    },
+    {
+        "id": "roll_gauge",
+        "type": "ui_gauge",
+        "z": "blackbox_tab_motion",
+        "name": "Roll Gauge",
+        "group": "blackbox_ui_group_tilt",
+        "order": 1,
+        "width": "6",
+        "height": "5",
+        "gtype": "gage",
+        "title": "Roll",
+        "label": "°",
+        "format": "{{value}}",
+        "min": "-45",
+        "max": "45",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "-10",
+        "seg2": "10",
+        "diff": false,
+        "className": "",
+        "x": 350,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "pitch_gauge",
+        "type": "ui_gauge",
+        "z": "blackbox_tab_motion",
+        "name": "Pitch Gauge",
+        "group": "blackbox_ui_group_tilt",
+        "order": 2,
+        "width": "6",
+        "height": "5",
+        "gtype": "gage",
+        "title": "Pitch",
+        "label": "°",
+        "format": "{{value}}",
+        "min": "-45",
+        "max": "45",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "-10",
+        "seg2": "10",
+        "diff": false,
+        "className": "",
+        "x": 410,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "vibration_motion_in",
+        "type": "mqtt in",
+        "z": "blackbox_tab_motion",
+        "name": "Vibration",
+        "topic": "blackbox/vibration",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "vib_gauge",
+                "vib_chart"
+            ]
+        ]
+    },
+    {
+        "id": "comment_alerts",
+        "type": "comment",
+        "z": "blackbox_tab_alerts",
+        "name": "ALERT MANAGEMENT - Buzzer Control & History",
+        "info": "",
+        "x": 190,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "buzzer_on_btn",
+        "type": "ui_button",
+        "z": "blackbox_tab_alerts",
+        "name": "Buzzer ON",
+        "group": "blackbox_ui_group_alert_control",
+        "order": 1,
+        "width": "3",
+        "height": "2",
+        "passthru": false,
+        "label": "🔊 ON",
+        "tooltip": "Turn buzzer ON",
+        "color": "white",
+        "bgcolor": "#00b500",
+        "className": "",
+        "icon": "fa-volume-up",
+        "payload": "ON",
+        "payloadType": "str",
+        "topic": "blackbox/alarm/control",
+        "topicType": "str",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "buzzer_out"
+            ]
+        ]
+    },
+    {
+        "id": "buzzer_off_btn",
+        "type": "ui_button",
+        "z": "blackbox_tab_alerts",
+        "name": "Buzzer OFF",
+        "group": "blackbox_ui_group_alert_control",
+        "order": 2,
+        "width": "3",
+        "height": "2",
+        "passthru": false,
+        "label": "🔇 OFF",
+        "tooltip": "Turn buzzer OFF",
+        "color": "white",
+        "bgcolor": "#ca3838",
+        "className": "",
+        "icon": "fa-volume-off",
+        "payload": "OFF",
+        "payloadType": "str",
+        "topic": "blackbox/alarm/control",
+        "topicType": "str",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "buzzer_out"
+            ]
+        ]
+    },
+    {
+        "id": "buzzer_out",
+        "type": "mqtt out",
+        "z": "blackbox_tab_alerts",
+        "name": "Buzzer Control",
+        "topic": "blackbox/alarm/control",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e1fa20097065e239",
+        "x": 340,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "alert_history",
+        "type": "function",
+        "z": "blackbox_tab_alerts",
+        "name": "Store Alert History",
+        "func": "const history = context.get('alertHistory') || [];\nconst timestamp = new Date().toLocaleString();\n\nhistory.unshift({\n    time: timestamp,\n    alert: msg.payload\n});\n\n// Keep only last 50 alerts\nif (history.length > 50) {\n    history.pop();\n}\n\ncontext.set('alertHistory', history);\nmsg.payload = history;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "alert_history_display"
+            ]
+        ]
+    },
+    {
+        "id": "alert_history_display",
+        "type": "ui_template",
+        "z": "blackbox_tab_alerts",
+        "group": "blackbox_ui_group_alert_history",
+        "name": "Alert History Table",
+        "order": 1,
+        "width": "12",
+        "height": "8",
+        "format": "<div class=\"history-container\">\n  <h3 class=\"history-title\">📋 Alert History Log</h3>\n  <div class=\"history-table\">\n    <table>\n      <thead>\n        <tr>\n          <th>Time</th>\n          <th>Alert Message</th>\n          <th>Severity</th>\n        </tr>\n      </thead>\n      <tbody id=\"history-body\">\n      </tbody>\n    </table>\n  </div>\n</div>\n\n<script>\n(function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (!msg || !msg.payload) return;\n    \n    const tbody = document.getElementById('history-body');\n    tbody.innerHTML = '';\n    \n    msg.payload.forEach(item => {\n      const row = document.createElement('tr');\n      const alert = item.alert.toLowerCase();\n      \n      let severity = 'normal';\n      let icon = '✅';\n      \n      if (alert.includes('nguy hiểm') || alert.includes('🚨') || alert.includes('critical')) {\n        severity = 'critical';\n        icon = '🚨';\n      } else if (alert.includes('cảnh báo') || alert.includes('⚠️') || alert.includes('warning')) {\n        severity = 'warning';\n        icon = '⚠️';\n      }\n      \n      row.innerHTML = `\n        <td>${item.time}</td>\n        <td>${item.alert}</td>\n        <td class=\"severity-${severity}\">${icon} ${severity.toUpperCase()}</td>\n      `;\n      \n      tbody.appendChild(row);\n    });\n  });\n})(scope);\n</script>\n\n<style>\n.history-container {\n  padding: 10px;\n}\n\n.history-title {\n  color: #00d4ff;\n  font-size: 20px;\n  margin-bottom: 15px;\n  text-align: center;\n}\n\n.history-table {\n  max-height: 400px;\n  overflow-y: auto;\n}\n\ntable {\n  width: 100%;\n  border-collapse: collapse;\n  font-size: 13px;\n}\n\nthead {\n  position: sticky;\n  top: 0;\n  background: #0094CE;\n  color: white;\n  z-index: 10;\n}\n\nth {\n  padding: 12px;\n  text-align: left;\n  font-weight: bold;\n}\n\ntd {\n  padding: 10px 12px;\n  border-bottom: 1px solid #333;\n}\n\ntbody tr:hover {\n  background: rgba(0, 148, 206, 0.1);\n}\n\n.severity-normal { color: #00b500; font-weight: bold; }\n.severity-warning { color: #ffaa00; font-weight: bold; }\n.severity-critical { color: #ff0000; font-weight: bold; animation: blink 1s infinite; }\n\n@keyframes blink {\n  0%, 100% { opacity: 1; }\n  50% { opacity: 0.5; }\n}\n\n::-webkit-scrollbar {\n  width: 8px;\n}\n\n::-webkit-scrollbar-track {\n  background: #1a1a1a;\n}\n\n::-webkit-scrollbar-thumb {\n  background: #0094CE;\n  border-radius: 4px;\n}\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 550,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "defec5991e55b104",
+        "type": "mqtt in",
+        "z": "blackbox_tab_alerts",
+        "name": "Alert Level",
+        "topic": "blackbox/alert",
+        "qos": "1",
+        "datatype": "utf8",
+        "broker": "e1fa20097065e239",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 340,
+        "wires": [
+            [
+                "alert_history"
+            ]
+        ]
+    },
+    {
+        "id": "5af695697f134c26",
+        "type": "ui_form",
+        "z": "blackbox_tab_alerts",
+        "name": "",
+        "label": "OTA",
+        "group": "5dd3ceafad888778",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Nhập mã xác nhận",
+                "value": "update_key",
+                "type": "password",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "update_key": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "blackbox/ota",
+        "topicType": "str",
+        "splitLayout": true,
+        "className": "",
+        "x": 270,
+        "y": 420,
+        "wires": [
+            [
+                "ba5600ea55ac10e3"
+            ]
+        ]
+    },
+    {
+        "id": "ba5600ea55ac10e3",
+        "type": "function",
+        "z": "blackbox_tab_alerts",
+        "name": "function 2",
+        "func": "// Giả sử trong Form, ô Name bạn đặt là \"password\" hoặc \"update_key\"\n// msg.payload hiện tại là: { \"update_key\": \"Duy@\" }\n\n// Lấy giá trị bên trong ra và gán ngược lại cho msg.payload\nmsg.payload = msg.payload.update_key; // Sửa 'update_key' thành 'password' nếu bên Form bạn đặt là password\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "21b9e3010a854950"
+            ]
+        ]
+    },
+    {
+        "id": "21b9e3010a854950",
+        "type": "mqtt out",
+        "z": "blackbox_tab_alerts",
+        "name": "",
+        "topic": "blackbox/ota",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e1fa20097065e239",
+        "x": 710,
+        "y": 420,
+        "wires": []
+    }
+]
