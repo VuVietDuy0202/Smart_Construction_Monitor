@@ -1,79 +1,113 @@
-# Hệ Thống Đỗ Xe Thông Minh (Smart and Safe Parking System)
+# 🚗 Smart IoT Blackbox - Hệ Thống Hộp Đen Thông Minh
 
-## 1. Mô tả dự án
+![PlatformIO](https://img.shields.io/badge/PlatformIO-Core-orange)
+![ESP32](https://img.shields.io/badge/Device-ESP32-blue)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
-Hệ thống đỗ xe thông minh sử dụng ESP32, cảm biến và IoT để tự động hóa quản lý bãi đỗ xe, giám sát an toàn, cảnh báo sự cố và hỗ trợ cập nhật firmware OTA (Over-the-Air) từ xa.
+## 1. Mô tả dự án (Project Description)
+**Đặt vấn đề ** 
 
-## 2. Chức năng chính
+**Smart IoT Blackbox** Là một chiếc hộp thông minh
 
-- Quản lý số lượng xe, vị trí từng chỗ đỗ (4 vị trí)
-- Tự động đóng/mở cổng bằng cảm biến và servo
-- Giám sát nhiệt độ, độ ẩm, khí gas, phát hiện cháy/nổ
-- Điều khiển đèn chiếu sáng tự động theo LDR hoặc thủ công
-- Cảnh báo nguy hiểm qua còi buzzer
-- Giao diện Dashboard Node-RED: hiển thị trạng thái, điều khiển, thống kê
-- Cập nhật firmware OTA qua WiFi hoặc BLE (an toàn, không cần tháo thiết bị)
+Hệ thống đảm bảo toàn vẹn dữ liệu bằng cơ chế "Dual Logging": lưu trữ cục bộ (Offline) trên thẻ nhớ SD và đồng bộ đám mây (Online) qua giao thức MQTT.
 
-## 3. Phần cứng sử dụng
+## 2. Chức năng chính (Key Features)
 
-- ESP32 MH-ET LIVE MiniKit
-- 2 x Servo SG90 (đóng/mở cổng)
-- 2 x Cảm biến vật cản (cổng vào/ra)
-- 4 x HC-SR04 (cảm biến siêu âm cho 4 vị trí đỗ)
-- 2 x LDR (cảm biến ánh sáng)
-- 1 x DHT11 (nhiệt độ, độ ẩm)
-- 1 x MQ-2 (khí gas, khói)
-- 1 x Buzzer (cảnh báo)
-- Đèn LED
+- 📍 **
+- 💥 **Phát hiện va chạm (Crash Detection):** Sử dụng IMU 6 trục để phát hiện rung lắc mạnh, lật xe hoặc va chạm bất ngờ.
+- 🔥 **Giám sát an toàn:** Theo dõi nhiệt độ, độ ẩm và nồng độ khí gas/khói (CO/LPG) để phòng chống cháy nổ.
+- 💾 **Lưu trữ cục bộ (Blackbox Mode):** Tự động ghi log dữ liệu vào thẻ nhớ SD (CSV format), đảm bảo không mất dữ liệu khi mất mạng.
+- 🚨 **Cảnh báo tức thời:** Kích hoạt còi Buzzer và gửi cảnh báo `EMERGENCY` về Dashboard ngay lập tức khi có sự cố.
+- 📊 **Dashboard trực quan:** Giao diện Node-RED hiển thị bản đồ (Map), biểu đồ cảm biến và lịch sử hành trình.
+- 📲 **Cập nhật từ xa (OTA):** Hỗ trợ nạp Firmware mới qua WiFi hoặc Bluetooth Low Energy (BLE).
+
+## 3. Phần cứng sử dụng (Hardware)
+
+| Thành phần | Model | Chức năng |
+| :--- | :--- | :--- |
+| MCU | **ESP32 DevKit V1** | Vi điều khiển trung tâm, WiFi, Bluetooth |
+| GPS | **NEO-6M** | Định vị toạ độ, vận tốc |
+| IMU | **MPU6050** | Gia tốc kế & Con quay hồi chuyển |
+| Storage | **Micro SD Module** | Module đọc thẻ nhớ (giao tiếp SPI) |
+| Temp/Hum | **DHT11 / DHT22** | Cảm biến nhiệt độ, độ ẩm |
+| Gas | **MQ-2** | Cảm biến khí gas, khói |
+| Alarm | **Active Buzzer** | Còi báo động |
+| Power | **DC-DC Buck Converter** | Hạ áp 12V/24V xuống 5V (nếu dùng trên xe) |
 
 ## 4. Sơ đồ kết nối (Pinout)
 
-| Thiết bị      | ESP32 Pin        |
-| ------------- | ---------------- |
-| Servo vào     | 4                |
-| Servo ra      | 2                |
-| HC-SR04 Entry | trig 17, echo 16 |
-| HC-SR04 Exit  | trig 33, echo 14 |
-| Vị trí 1      | trig 26, echo 13 |
-| Vị trí 2      | trig 19, echo 18 |
-| Vị trí 3      | trig 23, echo 5  |
-| Vị trí 4      | trig 32, echo 12 |
-| DHT11         | 10               |
-| MQ-2          | 35               |
-| LDR           | 39               |
-| LED1          | 25               |
-| LED2          | 15               |
-| Buzzer        | 9                |
+*Lưu ý: Sơ đồ dựa trên ESP32 30-pin/38-pin tiêu chuẩn.*
 
-## 5. Phần mềm
+| Thiết bị | Chân thiết bị | ESP32 GPIO | Giao tiếp |
+| :--- | :--- | :--- | :--- |
+| **GPS NEO-6M** | RX | 17 (TX2) | UART2 |
+| | TX | 16 (RX2) | UART2 |
+| **MPU6050** | SDA | 21 | I2C |
+| | SCL | 22 | I2C |
+| **SD Card** | CS | 5 | SPI (VSPI) |
+| | MOSI | 23 | SPI (VSPI) |
+| | MISO | 19 | SPI (VSPI) |
+| | CLK | 18 | SPI (VSPI) |
+| **DHT11** | DATA | 4 | Digital |
+| **MQ-2** | AO (Analog) | 35 | Analog (ADC1)* |
+| **Buzzer** | VCC/SIG | 32 | Digital Out |
+| **LED Status** | Anode | 2 | Digital Out (Built-in) |
+| **OTA Button** | Pin 1 | 0 (BOOT) | Input Pullup |
 
-- Lập trình ESP32 với PlatformIO (C++)
-- Node-RED Dashboard: hiển thị, điều khiển, thống kê
-- Giao tiếp MQTT (EMQX broker)
-- Hỗ trợ cập nhật firmware OTA:
-  - Qua WiFi (ArduinoOTA)
-  - Qua BLE (BLE OTA)
+*(Note: Sử dụng GPIO 35 cho Analog vì ADC2 không hoạt động khi dùng WiFi)*
 
-## 6. Luồng hoạt động
+## 5. Cấu trúc phần mềm (Software Stack)
 
-- Xe vào/ra: cảm biến phát hiện → servo mở cổng → cập nhật trạng thái
-- Quản lý chỗ đỗ: cảm biến siêu âm xác định vị trí trống/đã đỗ
-- Đèn: tự động bật/tắt theo LDR hoặc điều khiển từ dashboard
-- Cảnh báo: khi phát hiện khí gas, nhiệt độ cao, hoặc sự cố → buzzer kêu, dashboard cảnh báo
-- OTA: gửi lệnh từ dashboard hoặc app BLE để cập nhật firmware mới
+- **Firmware:** C++ (PlatformIO / Arduino Framework).
+  - Hệ điều hành: FreeRTOS (Đa luồng cho Sensor, SD Write, Network).
+- **Backend/Broker:** EMQX hoặc Mosquitto MQTT Broker.
+- **Frontend/Dashboard:** Node-RED (Dashboard 2.0).
+- **Protocol:** MQTT (TCP/IP), Serial (UART), SPI, I2C.
 
-## 7. Kết quả
+## 6. Luồng hoạt động (Workflow)
 
-- Mô hình hoạt động ổn định, cảnh báo an toàn, quản lý chỗ đỗ hiệu quả
-- Giao diện trực quan, dễ sử dụng
-- Hỗ trợ cập nhật phần mềm từ xa, an toàn
+1.  **Init:** Khởi động hệ thống, mount thẻ nhớ SD, kết nối WiFi.
+2.  **Sensing:**
+    - Đọc dữ liệu GPS (tọa độ).
+    - Đọc MPU6050 (tính toán tổng gia tốc Vector $a$).
+    - Đọc môi trường (MQ-2, DHT).
+3.  **Processing:**
+    - Nếu $a > Threshold$ (ngưỡng va chạm) -> **TRIGGER CRASH EVENT**.
+    - Nếu Gas > Threshold -> **TRIGGER FIRE ALARM**.
+4.  **Logging & Reporting:**
+    - Ghi dòng dữ liệu vào file `/log_data.csv` trên thẻ nhớ.
+    - Đóng gói JSON payload -> Publish lên topic `blackbox/data`.
+    - Nếu có sự cố -> Publish lên topic `blackbox/alert` với QoS 2.
 
-## 8. Hướng dẫn OTA
+## 7. Hướng dẫn OTA (Firmware Update)
 
-- **WiFi OTA**: Dùng PlatformIO hoặc Arduino IDE, chọn IP thiết bị, upload firmware mới
-- **BLE OTA**: Dùng app Python (app_ble_v1.py) hoặc script send_firmware.py để gửi file .bin qua Bluetooth
-- Có thể chuyển về chế độ OTA bằng lệnh MQTT hoặc nhấn nút BOOT >6s
+Hệ thống hỗ trợ 2 phương thức cập nhật Firmware:
 
-## 9. Tác giả
+### Cách 1: WiFi OTA (Mạng nội bộ)
+Dùng khi thiết bị đang kết nối WiFi ổn định.
+1.  Mở dự án trên **PlatformIO**.
+2.  Trong `platformio.ini`, thêm dòng: `upload_protocol = espota` và `upload_port = IP_CUA_ESP32`.
+3.  Nhấn nút **Upload**.
 
-- Duy (2025)
+### Cách 2: BLE OTA (Khi không có WiFi)
+Dùng khi ở hiện trường, thao tác qua điện thoại hoặc Laptop có Bluetooth.
+1.  Nhấn giữ nút **BOOT** trên ESP32 > 5 giây. Đèn LED sẽ nháy nhanh (Mode BLE).
+2.  Sử dụng script Python `ble_uploader.py` hoặc App điện thoại chuyên dụng.
+3.  Chọn file firmware `.bin` và gửi đi. Thiết bị sẽ tự động Flash và Reset.
+
+## 8. Cài đặt và Chạy thử (Installation)
+
+1.  Clone repository này về máy.
+2.  Mở bằng VS Code (đã cài extension PlatformIO).
+3.  Cấu hình WiFi và MQTT Broker trong file `config.h`.
+4.  Build và Upload code xuống ESP32.
+5.  Import file `flows.json` vào Node-RED để tạo Dashboard.
+
+## 9. Tác giả (Author)
+
+- **Duy**
+- Year: 2025
+- Contact: [Email/Link của bạn]
+
+---
+*Dự án này được thiết kế cho mục đích học tập và nghiên cứu IoT ứng dụng.*
