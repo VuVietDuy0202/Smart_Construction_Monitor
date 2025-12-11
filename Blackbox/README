@@ -1,0 +1,14 @@
+IOT_FINAL_TEST/
+├── platformio.ini
+├── include/
+│ ├── app_types.h # Struct dữ liệu (SensorData, AlertConfig...)
+│ ├── config.h # Các ngưỡng, hằng số
+│ └── secrets.h # WiFi, MQTT credentials
+│
+├── src/
+│ ├── main.cpp # Main loop, logic còi + ngưỡng, phân tích rung 
+│ │
+│ └── modules/
+│ ├── sensor_module.cpp/h # ✅ GỘP: MPU6050 + DHT22 + đọc dữ liệu
+│ ├── network_module.cpp/h # ✅ GỘP: WiFi + MQTT (tách OTA riêng)
+│ └── ota_module.cpp/h # OTA update (riêng vì code dài)
