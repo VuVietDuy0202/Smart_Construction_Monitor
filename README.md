@@ -1,8 +1,5 @@
 # Smart Construction Monitor - Hệ Thống Giám Sát An Toàn Công Trình
 
-![PlatformIO](https://img.shields.io/badge/PlatformIO-Core-orange)
-![ESP32](https://img.shields.io/badge/Device-ESP32-blue)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
 ## 1. Mô tả dự án (Project Description)
 
@@ -134,7 +131,8 @@ Thanh điều hướng giúp truy cập các dữ liệu chuyên sâu.
 * ***Nhật ký Sự cố (Alert History):*** Thay thế cho thẻ nhớ vật lý, bảng này tự động lưu trữ lịch sử các lần vi phạm an toàn (Rung/Nghiêng/Gas) kèm mốc thời gian và mức độ nghiêm trọng (Severity). Giúp kỹ sư dễ dàng truy xuất dữ liệu quá khứ.
 * ***Cập nhật Bảo mật (Secure OTA):*** Khu vực nạp Firmware từ xa được bảo vệ bằng mã xác nhận, đảm bảo chỉ người có thẩm quyền mới được phép can thiệp vào hệ thống.
   
-<img width="1871" height="862" alt="Screenshot 2025-12-12 002051" src="https://github.com/user-attachments/assets/fc957912-fda6-4514-9b80-6e52e7921d8e" />
+<img width="1907" height="866" alt="Screenshot 2025-12-11 201014" src="https://github.com/user-attachments/assets/d806a2a1-7d85-42cd-b9c6-ec86c7434208" />
+
 
 ## 8. Hướng dẫn OTA (Cập nhật từ xa)
 
