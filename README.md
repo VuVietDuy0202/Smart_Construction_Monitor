@@ -1,4 +1,4 @@
-# 🏗️ Smart Construction Monitor - Hệ Thống Giám Sát An Toàn Công Trình
+# Smart Construction Monitor - Hệ Thống Giám Sát An Toàn Công Trình
 
 ![PlatformIO](https://img.shields.io/badge/PlatformIO-Core-orange)
 ![ESP32](https://img.shields.io/badge/Device-ESP32-blue)
@@ -14,17 +14,17 @@ Dự án **Smart Construction Monitor** là thiết bị IoT nhỏ gọn đượ
 
 ## 2. Chức năng chính (Key Features)
 
-- 📐 **Giám sát kết cấu (Structural Health):**
+- **Giám sát kết cấu (Structural Health):**
   - **Góc nghiêng (Tilt):** Đo độ nghiêng trục X/Y để phát hiện giàn giáo bị lệch tâm, lún móng.
   - **Độ rung (Vibration):** Phát hiện rung chấn mạnh do gió bão hoặc máy móc va đập.
-- 🌡️ **Giám sát môi trường (Environment):**
+- **Giám sát môi trường (Environment):**
   - **Bê tông:** Giám sát nhiệt độ/độ ẩm để đảm bảo quy trình đóng rắn (Curing) của bê tông.
   - **An toàn:** Phát hiện nồng độ khí Gas/Khói vượt ngưỡng cho phép.
-- 🚨 **Cảnh báo đa tầng (Multi-level Alert):**
+- **Cảnh báo đa tầng (Multi-level Alert):**
   - **Tại chỗ:** Còi Buzzer và Đèn LED cảnh báo ngay khi phát hiện nguy hiểm.
   - **Từ xa:** Gửi tín hiệu báo động về Dashboard Node-RED qua Internet.
-- ☁️ **Giám sát thực (Real-time Monitoring):** Gửi gói tin dữ liệu mỗi **1 giây/lần** giúp vẽ biểu đồ chi tiết và phản ứng tức thì.
-- 📲 **Cập nhật không dây (OTA):** Nạp firmware từ xa qua WiFi hoặc Bluetooth (BLE) mà không cần tháo thiết bị.
+- **Giám sát thực (Real-time Monitoring):** Gửi gói tin dữ liệu mỗi **1 giây/lần** giúp vẽ biểu đồ chi tiết và phản ứng tức thì.
+- **Cập nhật không dây (OTA):** Nạp firmware từ xa qua WiFi hoặc Bluetooth (BLE) mà không cần tháo thiết bị.
 
 ## 3. Phần cứng sử dụng (Hardware)
 
